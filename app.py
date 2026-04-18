@@ -584,4 +584,3 @@ elif page == "🔍 Customer Lookup":
         ))
         fig.update_layout(template='plotly_dark', height=280, margin=dict(t=20, b=10))
         st.plotly_chart(fig, use_container_width=True)
-)
