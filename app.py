@@ -411,11 +411,15 @@ elif page == "📦 Bundle Recommender":
     st.subheader("📋 Full Bundle Catalog")
     catalog_df = pd.DataFrame(BUNDLE_CATALOG).T.reset_index()
     catalog_df.columns = ['Bundle', 'Price ($)', 'Data (GB)', 'Minutes', 'SMS', 'Description']
-    fig = px.scatter(catalog_df, x='Data (GB)', y='Price ($)', size='Minutes',
-                     text='Bundle', color='Price ($)', color_continuous_scale='Blues',
-                     template='plotly_dark',
-                     labels={'Data (GB)': 'Data Allowance (GB)', 'Price ($)': 'Monthly Price ($)'})
-    fig.update_traces(textposition='top center')
+    catalog_df['Price ($)'] = catalog_df['Price ($)'].astype(float)
+    catalog_df['Data (GB)'] = catalog_df['Data (GB)'].astype(float)
+    catalog_df['Minutes'] = catalog_df['Minutes'].astype(float)
+    fig = px.bar(catalog_df, x='Bundle', y='Price ($)',
+                 color='Data (GB)', color_continuous_scale='Blues',
+                 template='plotly_dark',
+                 text='Price ($)',
+                 labels={'Price ($)': 'Monthly Price ($)', 'Bundle': 'Bundle Name'})
+    fig.update_traces(textposition='outside')
     fig.update_layout(height=380, margin=dict(t=20))
     st.plotly_chart(fig, use_container_width=True)
 
@@ -580,3 +584,4 @@ elif page == "🔍 Customer Lookup":
         ))
         fig.update_layout(template='plotly_dark', height=280, margin=dict(t=20, b=10))
         st.plotly_chart(fig, use_container_width=True)
+)
