@@ -1,4 +1,5 @@
 # 📡 Telecom Customer & Network Intelligence Platform
+**Live Production Link:** [View the Interactive Dashboard Here](https://telecom-platform-5bj4uvgscavjfvfrnrgxqz.streamlit.app/)
 
 A machine learning-powered analytics dashboard for telecom customer intelligence and network monitoring.
 
